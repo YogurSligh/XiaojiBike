@@ -1,0 +1,15 @@
+services:
+  xuanjibao:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: xuanjibao:local
+    ports:
+      - "8000:8000"
+    environment:
+      XUANJIBAO_APP_DATA_DIR: /data
+    volumes:
+      - xuanjibao-data:/data
+
+volumes:
+  xuanjibao-data:

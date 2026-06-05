@@ -1,0 +1,15 @@
+.git
+.venv
+**/.venv
+__pycache__
+**/__pycache__
+.pytest_cache
+**/.pytest_cache
+node_modules
+**/node_modules
+frontend/dist
+frontend/node_modules
+backend/.venv
+backend/.ruff_cache
+frontend/.vite
+data/fund_data_cache.json

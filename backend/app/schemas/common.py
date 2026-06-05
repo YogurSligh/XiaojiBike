@@ -1,0 +1,16 @@
+from typing import Generic, TypeVar
+
+from pydantic import BaseModel
+
+
+T = TypeVar("T")
+
+
+class ApiResponse(BaseModel, Generic[T]):
+    data: T
+    message: str = "ok"
+
+
+class HealthResponse(BaseModel):
+    status: str
+    data_path: str
