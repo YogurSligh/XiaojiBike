@@ -4,6 +4,14 @@
 
 ## 本地开发
 
+一行启动本地调试：
+
+```bash
+./scripts/dev-local.sh
+```
+
+手动启动：
+
 ```bash
 cd backend
 python -m venv .venv
