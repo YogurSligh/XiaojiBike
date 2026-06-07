@@ -6,11 +6,97 @@
 
 推荐优先选择 Docker 方式：
 
+- 你已经在用 Codex、Claude Code、通义灵码、豆包 MarsCode、Trae、CodeBuddy 等 Agent：让 Agent 帮你启动。
 - 你只是想马上打开项目试用：用 Docker。
 - 你不想分别安装 Python 和 Node.js：用 Docker。
 - 你想参与开发、改代码、调试前端页面：用本地开发方式。
 
-## 方式一：用 Docker 启动
+## 方式一：让 Agent 帮你启动
+
+如果你不熟悉命令行，可以把下面这段提示词复制给 Codex、Claude Code 或其他代码 Agent。Agent 会帮你检查环境、安装依赖、启动项目，并告诉你应该打开哪个地址。
+
+国内用户常见的代码 Agent 或 AI 编程工具包括但不限于：
+
+- 通义灵码
+- 豆包 MarsCode
+- 腾讯云 CodeBuddy
+- 百度 Comate
+- Trae
+- CodeGeeX
+- CodeFuse
+- CodeArts Snap
+
+不必纠结具体工具名称。只要这个工具能打开项目文件夹、阅读项目文件、执行终端命令，就可以按下面的提示词操作。
+
+使用前先准备好：
+
+- 已经下载或克隆了项目代码。
+- Agent 可以访问这个项目文件夹。
+- 如果你想用最省心的方式，先安装并打开 Docker Desktop。
+
+### 通用提示词
+
+把 `<项目文件夹路径>` 换成你的真实路径，例如 macOS 上可能是 `/Users/你的用户名/Downloads/xiaojibike`，Windows 上可能是 `C:\Users\你的用户名\Downloads\xiaojibike`。
+
+```text
+请帮我在本机启动这个开源项目“小基比可”。
+
+项目路径：<项目文件夹路径>
+
+我的目标是尽快在浏览器里打开并试用，不需要改代码。
+
+请按下面顺序处理：
+1. 先进入项目目录，确认这是小基比可项目。
+2. 优先检查 Docker 是否可用；如果 Docker 可用，请用 docker compose up --build 启动。
+3. 如果 Docker 不可用，再检查 Python 3.12+、Node.js 20+ 和 npm 是否可用；如果可用，请用 npm run dev 启动。
+4. 启动后告诉我浏览器应该打开的本地地址。
+5. 如果启动失败，请用普通用户能看懂的话说明缺什么、怎么安装、下一步该做什么。
+
+注意：
+- 不要修改项目代码。
+- 不要提交 git。
+- 不要把它当成投资建议工具，只需要帮我本地启动试用。
+```
+
+### 给 Codex 的提示词
+
+如果你使用 Codex，可以复制这一段：
+
+```text
+请在当前工作区启动“小基比可”项目给我试用。先读 README.md 和 docs/QUICK_START.md，优先用 Docker；如果 Docker 不可用，再用 npm run dev。启动成功后告诉我前端访问地址。只做本地启动和必要环境检查，不改代码、不提交。
+```
+
+### 给 Claude Code 的提示词
+
+如果你使用 Claude Code，可以复制这一段：
+
+```text
+I want to run this open-source project locally for a quick trial. Please inspect README.md and docs/QUICK_START.md, then start the app. Prefer Docker with `docker compose up --build`; if Docker is unavailable, use `npm run dev`. After it starts, tell me the local URL to open. Do not modify files or commit changes.
+```
+
+### 给国产代码 Agent 的提示词
+
+如果你使用通义灵码、豆包 MarsCode、腾讯云 CodeBuddy、百度 Comate、Trae、CodeGeeX、CodeFuse、CodeArts Snap 等工具，可以复制这一段：
+
+```text
+帮我本地启动“小基比可”这个开源项目。我只是普通用户，想尽快打开网页试用。请先阅读 README.md 和 docs/QUICK_START.md，优先使用 Docker 启动；如果 Docker 不可用，再用本地开发方式启动。启动成功后告诉我浏览器访问地址。不要修改代码，不要提交 git。
+```
+
+Agent 启动成功后，通常会给你一个类似下面的地址：
+
+```text
+http://127.0.0.1:8000
+```
+
+或：
+
+```text
+http://127.0.0.1:5173
+```
+
+把这个地址复制到浏览器打开即可。
+
+## 方式二：用 Docker 启动
 
 这是最省心的方式。Docker 会把项目需要的运行环境一起准备好。
 
@@ -81,7 +167,7 @@ Ctrl + C
 docker compose down
 ```
 
-## 方式二：本地开发启动
+## 方式三：本地开发启动
 
 如果你想改代码或调试页面，可以用这种方式。
 
