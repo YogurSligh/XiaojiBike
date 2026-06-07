@@ -21,8 +21,7 @@ def create_app() -> FastAPI:
 
     @application.get("/health", response_model=HealthResponse)
     def health() -> HealthResponse:
-        current_settings = get_settings()
-        return HealthResponse(status="ok", data_path=str(current_settings.data_dir))
+        return HealthResponse(status="ok")
 
     _mount_frontend(application)
     return application

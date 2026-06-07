@@ -13,4 +13,3 @@ class ApiResponse(BaseModel, Generic[T]):
 
 class HealthResponse(BaseModel):
     status: str
-    data_path: str

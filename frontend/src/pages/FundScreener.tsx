@@ -612,6 +612,14 @@ export function FundScreenerPage() {
         }
       />
 
+      <Alert
+        showIcon
+        type="warning"
+        message="开源学习项目，不提供投资建议"
+        description="页面中的基金数据、排序、筛选、颜色高亮和比较结果仅用于技术演示与个人研究，不构成买入、卖出、持有、定投、赎回、基金评价或基金销售建议。公开部署前请自行确认数据源授权、备案、隐私和安全要求。"
+        style={{ marginBottom: 10 }}
+      />
+
       <Card
         size="small"
         styles={{ body: { padding: "12px 14px" } }}
@@ -1058,7 +1066,7 @@ function renderCompareCell(cell: CompareCell | undefined, row: CompareRow) {
   const style = compareCellStyle(cell, row);
   if (!style) return value;
   return (
-    <Tooltip title={row.direction === "lower" ? "同项对比：数值越低越优" : "同项对比：数值越高越优"}>
+    <Tooltip title="仅按当前字段数值做相对着色，不代表基金优劣或投资建议">
       <div style={style}>{value}</div>
     </Tooltip>
   );

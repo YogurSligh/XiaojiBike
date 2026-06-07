@@ -10,7 +10,7 @@ RUN npm run build
 FROM python:3.12-slim AS runtime
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    XUANJIBAO_APP_DATA_DIR=/data
+    XIAOJIBIKE_APP_DATA_DIR=/data
 WORKDIR /app
 RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential curl \

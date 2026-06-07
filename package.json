@@ -1,8 +1,10 @@
 {
-  "name": "xuanjibao",
+  "name": "xiaojibike",
   "private": true,
+  "license": "MIT",
   "version": "0.1.0",
   "scripts": {
-    "dev": "bash scripts/dev-local.sh"
+    "dev": "bash scripts/dev-local.sh",
+    "test:dev-local": "bash scripts/test-dev-local.sh"
   }
 }
