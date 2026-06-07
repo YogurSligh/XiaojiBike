@@ -10,6 +10,20 @@
 
 页面中的收益、回撤、费率、持仓、交易状态、排序、筛选、颜色高亮和比较结果仅供技术演示与个人研究，不构成买入、卖出、持有、转换、定投、赎回或任何其他投资建议。投资决策请以基金合同、招募说明书、定期报告、销售机构公告和监管披露文件等权威资料为准。
 
+## 快速开始
+
+第一次使用请先看 [快速开始文档](docs/QUICK_START.md)。普通用户推荐直接用 Docker 启动：
+
+```bash
+docker compose up --build
+```
+
+启动后打开：
+
+```text
+http://127.0.0.1:8000
+```
+
 ## 本地开发
 
 一行启动本地调试：
@@ -79,6 +93,7 @@ IMAGE=registry.example.com/xiaojibike TAG=0.1.0 PUSH=1 ./scripts/build-multiarch
 - `PRIVACY.md`：默认数据处理和公网部署隐私责任说明。
 - `SECURITY.md`：安全报告方式和部署建议。
 - `THIRD_PARTY_NOTICES.md`：第三方依赖许可证概览。
+- `docs/QUICK_START.md`：面向普通用户的快速开始说明。
 - `docs/OPEN_SOURCE_COMPLIANCE.md`：公开仓库和公网部署前的检查清单。
 
 ## 公网部署提示
