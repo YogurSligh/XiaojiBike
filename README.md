@@ -7,8 +7,10 @@
 一行启动本地调试：
 
 ```bash
-./scripts/dev-local.sh
+npm run dev
 ```
+
+该命令会同时启动后端 FastAPI 服务和前端 Vite 服务，并自动把前端代理指向本次启动的后端端口。
 
 手动启动：
 

@@ -58,8 +58,8 @@ export default function App() {
         <Layout className="page-shell">
           <Layout.Header className="app-header">
             <div className="brand-lockup">
-              <span className="brand-mark">选</span>
-              <span>选基宝</span>
+              <img className="brand-mark" src="/bijibao-icon.svg" alt="" aria-hidden="true" />
+              <span>比基宝</span>
             </div>
           </Layout.Header>
           <Layout.Content className="app-content">
