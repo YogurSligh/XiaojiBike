@@ -13,7 +13,7 @@
 
 ## 方式一：让 Agent 帮你启动
 
-如果你不熟悉命令行，可以把下面这段提示词复制给 Codex、Claude Code 或其他代码 Agent。Agent 会帮你检查环境、安装依赖、启动项目，并告诉你应该打开哪个地址。
+如果你不熟悉命令行，可以把下面这段提示词复制给 Codex、Claude Code 或其他代码 Agent。你不需要提前克隆项目，也不需要自己判断应该安装什么；把前置条件和 GitHub 地址都交给 Agent 检查即可。
 
 国内用户常见的代码 Agent 或 AI 编程工具包括但不限于：
 
@@ -26,35 +26,39 @@
 - CodeFuse
 - CodeArts Snap
 
-不必纠结具体工具名称。只要这个工具能打开项目文件夹、阅读项目文件、执行终端命令，就可以按下面的提示词操作。
+不必纠结具体工具名称。只要这个工具能访问终端、读取文件、克隆 GitHub 仓库，就可以按下面的提示词操作。
 
 使用前先准备好：
 
-- 已经下载或克隆了项目代码。
-- Agent 可以访问这个项目文件夹。
-- 如果你想用最省心的方式，先安装并打开 Docker Desktop。
+- 打开你常用的代码 Agent。
+- 允许 Agent 在你的电脑上执行终端命令。
+- 如果 Agent 需要安装系统软件、修改系统设置或申请权限，让它先说明原因，再由你确认。
 
 ### 通用提示词
-
-把 `<项目文件夹路径>` 换成你的真实路径，例如 macOS 上可能是 `/Users/你的用户名/Downloads/xiaojibike`，Windows 上可能是 `C:\Users\你的用户名\Downloads\xiaojibike`。
 
 ```text
 请帮我在本机启动这个开源项目“小基比可”。
 
-项目路径：<项目文件夹路径>
+GitHub 仓库：https://github.com/YogurSligh/XiaojiBike
 
 我的目标是尽快在浏览器里打开并试用，不需要改代码。
 
 请按下面顺序处理：
-1. 先进入项目目录，确认这是小基比可项目。
-2. 优先检查 Docker 是否可用；如果 Docker 可用，请用 docker compose up --build 启动。
-3. 如果 Docker 不可用，再检查 Python 3.12+、Node.js 20+ 和 npm 是否可用；如果可用，请用 npm run dev 启动。
-4. 启动后告诉我浏览器应该打开的本地地址。
-5. 如果启动失败，请用普通用户能看懂的话说明缺什么、怎么安装、下一步该做什么。
+1. 检查当前电脑是否有 Git；如果没有 Git，请用普通用户能看懂的话告诉我如何安装，或改用下载 ZIP 的方式获取项目。
+2. 把仓库克隆到一个合适的本地目录。如果目录已存在，请先确认里面是不是这个项目，不要覆盖我的文件。
+3. 进入项目目录，读取 README.md 和 docs/QUICK_START.md。
+4. 检查 Docker Desktop 和 docker compose 是否可用；如果可用，优先用 docker compose up --build 启动。
+5. 如果 Docker 不可用，请检查 Python 3.12+、Node.js 20+ 和 npm 是否可用；如果可用，用 npm run dev 启动。
+6. 如果缺少 Docker、Python、Node.js、npm 或 Git，不要假装已经启动，请明确告诉我缺什么、推荐安装哪个、安装完成后要重新运行什么命令。
+7. 启动成功后，告诉我浏览器应该打开的本地地址，例如 http://127.0.0.1:8000 或 http://127.0.0.1:5173。
+8. 如果端口被占用，请自动换一个可用端口，或告诉我应该访问的新地址。
+9. 如果启动失败，请总结关键报错，并给出下一步处理办法。
 
 注意：
 - 不要修改项目代码。
 - 不要提交 git。
+- 不要替我创建远端仓库、登录账号或上传任何文件。
+- 不要把密钥、token、个人文件或系统隐私信息写入项目。
 - 不要把它当成投资建议工具，只需要帮我本地启动试用。
 ```
 
@@ -63,7 +67,11 @@
 如果你使用 Codex，可以复制这一段：
 
 ```text
-请在当前工作区启动“小基比可”项目给我试用。先读 README.md 和 docs/QUICK_START.md，优先用 Docker；如果 Docker 不可用，再用 npm run dev。启动成功后告诉我前端访问地址。只做本地启动和必要环境检查，不改代码、不提交。
+请帮我启动“小基比可”项目给我试用。
+
+GitHub 仓库：https://github.com/YogurSligh/XiaojiBike
+
+如果当前工作区没有项目，请先检查 Git 是否可用并克隆仓库；如果当前工作区已经是这个项目，请直接使用当前目录。然后读取 README.md 和 docs/QUICK_START.md，检查 Docker、docker compose、Python 3.12+、Node.js 20+、npm 等前置条件。优先用 Docker 启动；Docker 不可用时再用 npm run dev。启动成功后告诉我前端访问地址。只做本地启动和必要环境检查，不改代码、不提交、不上传文件。
 ```
 
 ### 给 Claude Code 的提示词
@@ -71,7 +79,11 @@
 如果你使用 Claude Code，可以复制这一段：
 
 ```text
-I want to run this open-source project locally for a quick trial. Please inspect README.md and docs/QUICK_START.md, then start the app. Prefer Docker with `docker compose up --build`; if Docker is unavailable, use `npm run dev`. After it starts, tell me the local URL to open. Do not modify files or commit changes.
+I want to run this open-source project locally for a quick trial.
+
+GitHub repository: https://github.com/YogurSligh/XiaojiBike
+
+If the project is not already in the current workspace, check whether Git is available and clone the repository first. Then inspect README.md and docs/QUICK_START.md. Check the prerequisites: Docker Desktop, docker compose, Python 3.12+, Node.js 20+, and npm. Prefer Docker with `docker compose up --build`; if Docker is unavailable, use `npm run dev`. After it starts, tell me the local URL to open. Do not modify files, commit changes, upload files, or use this as investment advice.
 ```
 
 ### 给国产代码 Agent 的提示词
@@ -79,7 +91,11 @@ I want to run this open-source project locally for a quick trial. Please inspect
 如果你使用通义灵码、豆包 MarsCode、腾讯云 CodeBuddy、百度 Comate、Trae、CodeGeeX、CodeFuse、CodeArts Snap 等工具，可以复制这一段：
 
 ```text
-帮我本地启动“小基比可”这个开源项目。我只是普通用户，想尽快打开网页试用。请先阅读 README.md 和 docs/QUICK_START.md，优先使用 Docker 启动；如果 Docker 不可用，再用本地开发方式启动。启动成功后告诉我浏览器访问地址。不要修改代码，不要提交 git。
+帮我本地启动“小基比可”这个开源项目。我只是普通用户，想尽快打开网页试用。
+
+GitHub 仓库：https://github.com/YogurSligh/XiaojiBike
+
+请先检查是否已经在项目目录里；如果不在，请检查 Git 是否可用并克隆这个仓库。然后阅读 README.md 和 docs/QUICK_START.md，检查 Docker Desktop、docker compose、Python 3.12+、Node.js 20+、npm 等前置条件。优先使用 Docker 启动；如果 Docker 不可用，再用本地开发方式启动。启动成功后告诉我浏览器访问地址。如果缺少软件，请用普通用户能看懂的话告诉我该装什么、去哪装、装完后运行什么命令。不要修改代码，不要提交 git，不要上传文件。
 ```
 
 Agent 启动成功后，通常会给你一个类似下面的地址：
@@ -115,7 +131,7 @@ https://www.docker.com/products/docker-desktop/
 如果你会用 Git：
 
 ```bash
-git clone <你的 GitHub 仓库地址>
+git clone https://github.com/YogurSligh/XiaojiBike.git
 cd xiaojibike
 ```
 
@@ -190,7 +206,7 @@ npm --version
 ### 2. 下载项目代码
 
 ```bash
-git clone <你的 GitHub 仓库地址>
+git clone https://github.com/YogurSligh/XiaojiBike.git
 cd xiaojibike
 ```
 
