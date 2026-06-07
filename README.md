@@ -1,6 +1,6 @@
 # 小基比可
 
-从 `chicangguanliqi` 独立出来的场外基金筛选工具，只保留基金搜索、流式抓取、详情查看、费率补全和比较列表，不包含定投、持仓、资产分类、Excel 导入或备份恢复等原项目数据面。
+小基比可是一个面向个人研究和开源学习的场外基金筛选工具，提供基金搜索、流式抓取、详情查看、费率补全和比较列表。
 
 项目名来自一只叫“小可”的牡丹鹦鹉，外号“小鸡 B 可”。Logo 也以她的白蓝羽色为原型，画成叼着金币、翅膀比 OK 的小鸟。
 
@@ -109,4 +109,4 @@ IMAGE=registry.example.com/xiaojibike TAG=0.1.0 PUSH=1 ./scripts/build-multiarch
 
 ## 环境变量
 
-新配置前缀为 `XIAOJIBIKE_`。为兼容旧本地脚本，后端配置和开发脚本暂时仍识别旧的 `XUANJIBAO_` 前缀；新部署请优先使用 `XIAOJIBIKE_APP_DATA_DIR`、`XIAOJIBIKE_BACKEND_PORT`、`XIAOJIBIKE_FRONTEND_PORT` 和 `XIAOJIBIKE_BACKEND_URL`。
+配置前缀为 `XIAOJIBIKE_`。常用变量包括 `XIAOJIBIKE_APP_DATA_DIR`、`XIAOJIBIKE_BACKEND_PORT`、`XIAOJIBIKE_FRONTEND_PORT` 和 `XIAOJIBIKE_BACKEND_URL`。
